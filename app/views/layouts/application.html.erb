@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProgBlog</title>
+    <%= csrf_meta_tags %>
+	<script id="dsq-count-scr" src="//maxprogrammerblog.disqus.com/count.js" async></script>
+  <script src="https://kit.fontawesome.com/678f8409a8.js" crossorigin="anonymous"></script>
+
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <body>
+  	<div class="container col-md-10 content">
+							<nav class="navbar navbar-toggleable-md rounded sticky-top navbar-dark bg-dark">
+								<a class="navbar-brand col-md-8" href="<%= posts_path%>"><h2>PR<i class="fas fa-cog"></i>G BL<i class="fas fa-cog"></i>G</h2></a>
+								<ul class=" nav ">
+									<li class="nav-item "><%=link_to "All Posts", posts_path, class: "nav-link"%>
+									</li>
+									<li class="nav-item"><%= link_to "New Post", new_post_path, class: "nav-link"%>
+									</li>
+                  <% if user_signed_in? %>
+			
+								
+		
+										<li class="nav-item"><%= link_to "Saved posts", user_saves_path(current_user.id), class: "nav-link"%>
+										</li>
+
+											<li class="nav-item "><%=  link_to "Log out", destroy_user_session_path, method: :delete, class: "nav-link"%>
+										</li>
+										</ul>
+								
+
+								<% else %>
+									
+										<li class="nav-item ",style="float:right"><%= link_to "Log in ", new_user_session_path, class: "nav-link "%>
+										</li>
+										<li class="nav-item ",style="float:right"><%= link_to "Register", new_user_registration_path, class: "nav-link"%>
+										</li>
+									</ul>
+									<% end %>
+                
+                  </nav>
+                <div class=" col-md-8 mx-auto mt-2">
+				<% flash.each do |name, message| %>
+					<div class="alert  <%= bootstrap_class_for(name) %> ">
+						<button  class="close"  data-dismiss="alert">&times;</button>
+						<%= message %>
+					</div>
+				<% end %>
+			</div>
+			<div class = "row">
+					<div class ="  ml-0  col-md-8" >			
+						<%= yield %>
+					</div>
+				
+				<div class =" mt-5 col-md-4" >	
+					<h3 class = 'mb-2 text-center'>Tags</h3>
+						<% tag_list (Tag.counts) do |tag| %>
+						<%= link_to tag.name, tag_path(tag.name), class: "tag" %>
+						<% end %>	
+		   		</div>
+    		</div>
+			  </div>
+  </body>
+</html>

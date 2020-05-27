@@ -1,0 +1,44 @@
+
+<div >
+<div class="text-center">
+<h1><%= @post.title %></h1>
+<p><%=@post.author%></p>
+
+                <% if user_signed_in?%>
+                    
+                    <% is_saved = @post.saves.find { |safe| safe.user_id == current_user.id} %>
+                    
+                        <% if is_saved %>
+                            
+                            <%= link_to post_safe_path(@post, is_saved), method: :delete , class: ' btn btn-dark btn-xs pull-right  ml-2 align-self-center' do %>
+                            Delete from saved
+
+                        <% end %>
+
+                        
+                        <% else %>
+            
+                            <%= link_to post_saves_path(@post), method: :post, class: 'btn btn-outline-dark btn-xs pull-right ml-2 align-self-center' do %>
+                             Save
+
+                        <% end %>
+                        
+                    <% end %>
+                <% end %>
+
+            
+                <%= link_to edit_post_path(@post), class: 'btn btn-outline-dark btn-xs pull-right' do %>
+                   Edit
+                <% end %>
+                    <%= link_to post_path(@post),method: :delete, data:{confirm: 'Are you sure?'} , class: 'btn btn-outline-dark btn-xs pull-right' do %>
+                    Delete 
+                <% end %>
+</div>
+<div class ="container">
+<p><%= raw @post.body %></p>
+ </div>
+
+<br>
+<%= render 'disqus'%>
+ </div>
+

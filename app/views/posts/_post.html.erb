@@ -1,0 +1,12 @@
+<div class = "container border rounded mt-2 bg-light ">
+
+  <div class ="row mb-0 ">
+    <h2 class="col col-7  mb-0  h-25% "style="word-wrap:break-word"><%= link_to post.title,  post_path(post) %></h2>
+    <p class ="col col-3 mr-0 mt-2 text-right" style="word-wrap:break-word">@<%= post.author%> </p>
+    <p class =" col col-2 mr-0 mt-2 text-right" style="word-wrap:break-word"><%= post.created_at.to_date%> </p>
+  </div>
+
+  <%=raw post.tags.map(&:name).map{ |t| link_to t, tag_path(t), class: 'tag tag-primary' }.join(' ') %>
+  </p>
+  <p><%=  post.summary%></p>
+</div>

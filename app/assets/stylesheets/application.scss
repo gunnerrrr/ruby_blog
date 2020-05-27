@@ -1,0 +1,40 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+$theme-colors: (
+
+    light: rgb(199, 199, 199)
+  );
+  $theme-colors: (
+
+    primary: rgb(56, 56, 56)
+  );
+  .nav-link {color:  rgb(199, 199, 199);}
+  .nav-link:hover {color: rgb(226, 226, 226);}
+
+  .tag
+{
+  font-size: 1em;
+  background-color: rgba(56, 56, 56, 0.548);
+  border-radius: 0.2em;
+  //margin: 0.2m;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-left: 0.04em;
+  padding-right: 0.04em;
+}
+ @import "bootstrap";

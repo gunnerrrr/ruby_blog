@@ -1,0 +1,8 @@
+<h1><%=  @tag.name %></h1>
+<br>
+<% if @tag.posts.empty?%>
+                <h2 class="text-center">No posts</h2>
+                <% else %>
+             <%= render @tags%>
+             <%end%>
+
